@@ -112,7 +112,11 @@ public abstract class APArrowEntity extends AbstractArrowEntity {
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
         if (!level.isClientSide && target != getEntity()) {
-            this.prop.hit(target);
+            try {
+                this.prop.hit(target);
+            } catch (NullPointerException e) {
+                
+            }
         }
     }
 
